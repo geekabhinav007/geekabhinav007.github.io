@@ -79,20 +79,21 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
+  selectedValue = selectedValue.toLowerCase(); // convert selectedValue to lowercase
 
   for (let i = 0; i < filterItems.length; i++) {
+    let itemCategory = filterItems[i].dataset.category.toLowerCase(); // convert data-category value to lowercase
 
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (selectedValue === itemCategory) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
     }
-
   }
-
 }
+
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
